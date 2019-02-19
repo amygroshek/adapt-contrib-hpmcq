@@ -1,0 +1,57 @@
+{
+  "_id": "c-105",
+  "_parentId": "b-55",
+  "_type": "component",
+  "_component": "hpmcq",
+  "_classes": "",
+  "_layout": "left",
+  "_attempts": 1,
+  "_shouldDisplayAttempts": false,
+  "_questionWeight": 1,
+  "_isRandom": false,
+  "_canShowModelAnswer": true,
+  "_canShowFeedback": true,
+  "_canShowMarking": true,
+  "_recordInteraction": true,
+  "title": "MCQ",
+  "displayTitle": "MCQ",
+  "body": "Which of the following options would you consider to be correct?",
+  "instruction": "",
+  "_items": [
+    {
+      "text": "This is option 1.",
+      "_shouldBeSelected": true
+    },
+    {
+      "text": "This is option 2.",
+      "_shouldBeSelected": false
+    },
+    {
+      "text": "This is option 3.",
+      "_shouldBeSelected": false
+    },
+    {
+      "text": "This is option 4.",
+      "_shouldBeSelected": false
+    }
+  ],
+  "_feedback":{
+    "title": "Feedback",
+    "correct": "Congratulations, this is the correct feedback.",
+    "_incorrect": {
+      "notFinal": "There's a better answer. ",
+      "final": "The correct answer is ___. This feedback will appear if you answered the question incorrectly."
+    },
+    "_partlyCorrect": {
+      "notFinal": "You ",
+      "final": "The correct answer is ___. This feedback will appear if you answered the question correctly."
+    }
+  },
+  "_buttons": {
+    "remainingAttemptsText": "attempts remaining",
+    "remainingAttemptText": "final attempt"
+  },
+  "_pageLevelProgress": {
+    "_isEnabled": true
+  }
+}
