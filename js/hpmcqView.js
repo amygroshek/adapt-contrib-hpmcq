@@ -1,6 +1,7 @@
 define([
+    'core/js/adapt',
     'core/js/views/questionView'
-], function(QuestionView) {
+], function(Adapt, QuestionView) {
 
     var HpmcqView = QuestionView.extend({
 
@@ -99,6 +100,18 @@ define([
             $itemInput.prop('checked', selected);
             item._isSelected = selected;
             this.model.set('_selectedItems', selectedItems);
+            // this.model.setupFeedback();
+            // this.model.showFeedback();
+            if (this.model.get('_canShowFeedback')) {
+                this.model.setupFeedback();
+                Adapt.trigger('questionView:showFeedback', this);
+                this.showMarking();
+                // this.setQuestionAsSubmitted();
+                // this.markQuestion();
+                // this.setScore();
+            } else {
+                // Adapt.trigger('questionView:disabledFeedback', this);
+            }
         },
 
         // Blank method to add functionality for when the user cannot submit
@@ -108,8 +121,9 @@ define([
         // This is important and should give the user feedback on how they answered the question
         // Normally done through ticks and crosses by adding classes
         showMarking: function() {
+            // console.log('hpmcqView showMarking()');
             if (!this.model.get('_canShowMarking')) return;
-
+            // console.log('_canShowMarking === true');
             _.each(this.model.get('_items'), function(item, i) {
                 var $item = this.$('.component-item').eq(i);
                 $item.removeClass('correct incorrect').addClass(item._isCorrect ? 'correct' : 'incorrect');

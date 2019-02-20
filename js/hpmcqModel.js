@@ -1,6 +1,9 @@
 define([
-    'core/js/models/questionModel'
-], function(QuestionModel) {
+    'core/js/adapt',
+    'core/js/views/questionView',
+    'core/js/models/questionModel',
+    'components/adapt-contrib-hpmcq/js/hpmcqView'
+], function(Adapt, QuestionView, QuestionModel, HpmcqView) {
 
     var HpmcqModel = QuestionModel.extend({
 
@@ -23,6 +26,10 @@ define([
             }
         },
 
+        getFeedbackTitle: function() {
+            return this.get('_feedback').title || "";
+        },
+
         restoreUserAnswers: function() {
             if (!this.get("_isSubmitted")) return;
 
@@ -41,7 +48,7 @@ define([
             this.setQuestionAsSubmitted();
             this.markQuestion();
             this.setScore();
-            //this.showMarking();
+            // this.showMarking();
             this.setupFeedback();
         },
 
@@ -82,6 +89,8 @@ define([
         },
 
         isCorrect: function() {
+
+            console.log('hpmcqModel isCorrect()');
 
             var numberOfRequiredAnswers = 0;
             var numberOfCorrectAnswers = 0;
@@ -126,19 +135,29 @@ define([
         },
 
         setupFeedback: function() {
-
-            if (this.get('_isCorrect')) {
+            console.log('hpmcqModel setupFeedback()');
+            Adapt.trigger('questionView:markQuestion', this);
+            var isCorr = this.isCorrect();
+            // if (this.get('_isCorrect')) {
+            if (isCorr) {
+                // console.log('is correct');
                 this.setupCorrectFeedback();
+                this.setScore();
+                this.setQuestionAsSubmitted();
+                Adapt.trigger('questionView:checkQuestionCompletion', this);
+                this.setCompletionStatus();
             } else if (this.isPartlyCorrect()) {
+                // console.log('is partly correct');
                 this.setupPartlyCorrectFeedback();
             } else {
+                // console.log('is not correct');
                 // apply individual item feedback
-                if((this.get('_selectable') === 1) && this.get('_selectedItems')[0].feedback) {
-                    this.setupIndividualFeedback(this.get('_selectedItems')[0]);
-                    return;
-                } else {
+                // if((this.get('_selectable') === 1) && this.get('_selectedItems')[0].feedback) {
+                //     this.setupIndividualFeedback(this.get('_selectedItems')[0]);
+                //     return;
+                // } else {
                     this.setupIncorrectFeedback();
-                }
+                // }
             }
         },
 
