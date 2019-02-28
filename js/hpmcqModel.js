@@ -148,16 +148,22 @@ define([
                 this.setCompletionStatus();
             } else if (this.isPartlyCorrect()) {
                 // console.log('is partly correct');
-                this.setupPartlyCorrectFeedback();
+                // this.setupPartlyCorrectFeedback();
+                if((this.get('_selectable') === 1) && this.get('_selectedItems')[0].feedback) {
+                    this.setupIndividualFeedback(this.get('_selectedItems')[0]);
+                    return;
+                } else {
+                    this.setupPartlyCorrectFeedback(); // this.setupIncorrectFeedback();
+                }
             } else {
                 // console.log('is not correct');
                 // apply individual item feedback
-                // if((this.get('_selectable') === 1) && this.get('_selectedItems')[0].feedback) {
-                //     this.setupIndividualFeedback(this.get('_selectedItems')[0]);
-                //     return;
-                // } else {
+                if((this.get('_selectable') === 1) && this.get('_selectedItems')[0].feedback) {
+                    this.setupIndividualFeedback(this.get('_selectedItems')[0]);
+                    return;
+                } else {
                     this.setupIncorrectFeedback();
-                // }
+                }
             }
         },
 

@@ -1,20 +1,30 @@
 .hpmcq-component {
+  .component-body {
+    margin: 0 0 10px !important;
+
+    p.question {
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+    }
+  }
+
     .hpmcq-item {
-        background-color:@item-color;
+        // background-color:@item-color;
         position:relative;
     }
 
     .hpmcq-item label {
-        color:@item-text-color;
+        color: @primary-color; // @item-text-color;
         display:block;
         margin-bottom:2px;
         position:relative;
         z-index:1;
-        background-color:@item-color;
+        // background-color: transparent; // @item-color;
         cursor:pointer;
 
         .hpmcq-answer-icon {
-            color:@item-text-color;
+            color: @primary-color; // @item-text-color;
             &.radio {
                 width: @icon-size + 2;
                 height: @icon-size + 2;
@@ -36,8 +46,8 @@
         }
 
         &.selected {
-            color:@item-text-color-selected;
-            background-color:@item-color-selected;
+            color: darken(@primary-color, 15%); // @item-text-color-selected;
+            background-color: transparent; // @item-color-selected;
             border-color:@item-border-color-selected;
             .hpmcq-answer-icon {
                  &.radio {
@@ -58,13 +68,13 @@
                 }
             }
             .hpmcq-item-icon {
-                color:@item-text-color-selected;
+                color: darken(@primary-color, 15%); // @item-text-color-selected;
             }
         }
     }
 
     .hpmcq-item-inner {
-        padding:@item-padding;
+        padding: 10px @item-padding;
         padding-left:(@icon-size+(@item-padding-left*2));
 	    .dir-rtl & {
             padding-left:inherit;
@@ -85,12 +95,12 @@
     }
 
     .hpmcq-correct-icon {
-        color:@validation-success;
+        color: @hp-blue; // @validation-success;
         display:none;
     }
 
     .hpmcq-incorrect-icon {
-        color:@validation-error;
+        color: #727272; // @validation-error;
         display:none;
     }
 
@@ -140,24 +150,24 @@
 
     &.disabled {
         .hpmcq-item label.selected.disabled {
-            color:@item-text-color-selected;
-            background-color:@item-color-selected;
-            border-color:@item-border-color-selected;
+            color: #727272; // @item-text-color-selected;
+            background-color: transparent; // @item-color-selected;
+            border-color: tranparent; // @item-border-color-selected;
             cursor:default;
         }
         .hpmcq-item label.disabled {
-            color:@item-text-color-disabled;
-            background-color:@item-color-disabled;
-            border-color:@item-border-color-disabled;
+          color: #727272; // @item-text-color-selected;
+          background-color: transparent; // @item-color-selected;
+          border-color: tranparent; // @item-border-color-selected;
             cursor:default;
         }
 
         .hpmcq-item.correct .selected .state {
-            color:@validation-success;
+            color: @hp-blue; // @validation-success;
         }
 
         .hpmcq-item.incorrect .selected .state {
-            color:@validation-error;
+            color: #727272; // @validation-error;
         }
     }
 }
@@ -167,20 +177,20 @@
     .hpmcq-widget {
         &:not(.disabled) {
             .hpmcq-item label:hover {
-                color:@item-text-color-hover;
-                background-color:@item-color-hover;
-                border-color:@item-border-color-hover;
+                color: darken(@primary-color, 15%); // @item-text-color-hover;
+                // background-color:@item-color-hover;
+                border-color: @item-border-color-hover;
                 .hpmcq-item-icon {
-                    color:@item-text-color-hover;
+                    color: darken(@primary-color, 15%); // @item-text-color-hover;
                 }
             }
             .hpmcq-item label.disabled {
                 color:@item-text-color-disabled;
-                background-color:@item-color-disabled;
+                // background-color:@item-color-disabled;
                 border-color:@item-border-color-disabled;
                 &:hover {
                     color:@item-text-color-disabled;
-                    background-color:@item-color-disabled;
+                    // background-color:@item-color-disabled;
                     border-color:@item-border-color-disabled;
                 }
                 .hpmcq-item-icon {

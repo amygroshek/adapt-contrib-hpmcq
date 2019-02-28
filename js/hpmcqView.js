@@ -106,6 +106,7 @@ define([
                 this.model.setupFeedback();
                 Adapt.trigger('questionView:showFeedback', this);
                 this.showMarking();
+                // this.showCorrectAnswer();
                 // this.setQuestionAsSubmitted();
                 // this.markQuestion();
                 // this.setScore();
