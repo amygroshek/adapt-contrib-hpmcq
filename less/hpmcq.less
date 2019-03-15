@@ -124,23 +124,27 @@
 
     &.show-user-answer {
         .hpmcq-item-icon {
-            display:none;
+            display: none;
         }
         .incorrect {
             .selected .hpmcq-incorrect-icon {
-                display:block;
+                display: none; // block;
             }
         }
         .correct {
             .selected .hpmcq-correct-icon {
-                display:block;
+                display: none; // block;
             }
+        }
+        .hpmcq-answer-icon {
+            display: block;
+            // color: @hp-gray !important;
         }
     }
 
     &.show-correct-answer {
         .hpmcq-item-icon {
-            display:none;
+            display: none;
         }
         .incorrect .selected .hpmcq-correct-icon,
         .correct .selected .hpmcq-correct-icon {

@@ -45,11 +45,11 @@ define([
 
             this.set("_selectedItems", selectedItems);
 
-            this.setQuestionAsSubmitted();
-            this.markQuestion();
-            this.setScore();
-            // this.showMarking();
-            this.setupFeedback();
+            // this.setQuestionAsSubmitted();
+            // this.markQuestion();
+            // this.setScore();
+            // // this.showMarking();
+            // this.setupFeedback();
         },
 
         setupRandomisation: function() {
@@ -146,6 +146,7 @@ define([
                 this.setQuestionAsSubmitted();
                 Adapt.trigger('questionView:checkQuestionCompletion', this);
                 this.setCompletionStatus();
+                this.storeUserAnswer();
             } else if (this.isPartlyCorrect()) {
                 // console.log('is partly correct');
                 // this.setupPartlyCorrectFeedback();
